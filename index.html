@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run JavaScript Sandbox</title>
+    <title>JavaScript Sandbox</title>
     <style>
         /* Light mode styles */
         body.light-mode {
@@ -56,8 +56,10 @@
     </style>
 </head>
 <body class="light-mode">
-    <h1>JavaScript Runner with Logging</h1>
-    <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    <header>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </header>
+    <h1>JavaScript Sandbox</h1>
     <textarea rows="20" id="jsInput" class="light-mode" placeholder="Type your JavaScript code here..."></textarea>
     <br>
     <button onclick="runCode()">Run Code</button>
