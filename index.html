@@ -6,14 +6,32 @@
     <title>Run JavaScript from Text Input</title>
 </head>
 <body>
-    <h1>JavaScript Runner</h1>
+    <h1>JavaScript Runner with Logging</h1>
     <textarea id="jsInput" rows="10" cols="50" placeholder="Type your JavaScript code here..."></textarea>
     <br>
     <button onclick="runCode()">Run Code</button>
     <h2>Output:</h2>
     <pre id="output"></pre>
+    <h2>Console Log:</h2>
+    <pre id="consoleLog"></pre>
 
     <script>
+        (function() {
+            const originalConsoleLog = console.log;
+            const consoleLogElement = document.getElementById('consoleLog');
+
+            console.log = function(...args) {
+                originalConsoleLog.apply(console, args);
+                args.forEach(arg => {
+                    if (typeof arg === 'object') {
+                        consoleLogElement.innerText += JSON.stringify(arg, null, 2) + '\n';
+                    } else {
+                        consoleLogElement.innerText += arg + '\n';
+                    }
+                });
+            };
+        })();
+
         function runCode() {
             const code = document.getElementById('jsInput').value;
             try {
