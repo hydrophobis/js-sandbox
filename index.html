@@ -63,13 +63,23 @@
     <h1>JavaScript Sandbox</h1>
     <textarea rows="20" id="jsInput" class="light-mode" placeholder="Type your JavaScript code here..."></textarea>
     <br>
-    <button onclick="runCode()">Run Code</button>
+    <button id="runCodeButton" onclick="runCode()">Run Code</button>
     <h2>Output:</h2>
     <pre id="output" class="light-mode"></pre>
     <h2>Console Log:</h2>
     <pre id="consoleLog" class="light-mode"></pre>
 
     <script>
+    // Function to handle key combination press
+        function handleKeyPress(event) {
+              if (event.ctrlKey && event.altKey && event.key === 'a') {
+                    document.getElementById('runCodeButton').click();
+              }
+        }
+        
+        // Add event listener to capture key presses
+        document.addEventListener('keydown', handleKeyPress);
+        
         function toggleDarkMode() {
             const body = document.body;
             const textarea = document.getElementById('jsInput');
